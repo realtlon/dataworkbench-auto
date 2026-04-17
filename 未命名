@@ -1,0 +1,90 @@
+{
+  "Version": 1,
+  "Id": "39787f08-a607-4e2f-9d70-685f4ad4cc84",
+  "Name": null,
+  "Nodes": [
+    {
+      "Id": "8755d57c-08b1-4a87-8c56-e9a354518c36",
+      "PluginId": "datasource",
+      "Name": "\u5B66\u751F\u6210\u7EE9\u5BFC\u5165",
+      "X": 68,
+      "Y": 23,
+      "InputValues": {
+        "sourceType": "CSV",
+        "filePath": "C:\\Users\\zensnorlax\\Desktop\\\u6BD5\u4E1A\u8BBE\u8BA1\\DataAnalysisWorkbench\\sample_data.csv"
+      }
+    },
+    {
+      "Id": "84b37d41-01c0-41ed-9fbc-6e7701fc8dcd",
+      "PluginId": "columnselector",
+      "Name": "\u6309\u5217\u9009\u62E9",
+      "X": 84,
+      "Y": 213,
+      "InputValues": {
+        "columns": "StudentId, Score, Bonus,Name"
+      }
+    },
+    {
+      "Id": "9d263398-ea60-46f7-9113-0fe66c75130a",
+      "PluginId": "export",
+      "Name": "\u6570\u636E\u5BFC\u51FA",
+      "X": 178,
+      "Y": 773,
+      "InputValues": {
+        "filePath": "C:\\Users\\zensnorlax\\Desktop\\sample_data.csv",
+        "format": "CSV"
+      }
+    },
+    {
+      "Id": "bf7fc900-40b8-4873-9380-53613fdd3370",
+      "PluginId": "filter",
+      "Name": "\u8FC7\u6EE4\u5217",
+      "X": 102,
+      "Y": 398,
+      "InputValues": {
+        "filterExpression": "(Score \u003E 80 \u0026\u0026 Bonus \u003E 0) \u0026\u0026Name == \u0022Student1\u0022"
+      }
+    },
+    {
+      "Id": "edeab3b2-dabc-48e6-a5cd-437e0e64d7d7",
+      "PluginId": "formula",
+      "Name": "\u8BA1\u7B97\u516C\u5F0F",
+      "X": 85,
+      "Y": 594,
+      "InputValues": {
+        "formulaColumn": "test",
+        "formulaExpression": "Score * 0.6 \u002B Bonus * 0.4"
+      }
+    }
+  ],
+  "Edges": [
+    {
+      "StartNodeId": "8755d57c-08b1-4a87-8c56-e9a354518c36",
+      "EndNodeId": "84b37d41-01c0-41ed-9fbc-6e7701fc8dcd",
+      "ParameterMappings": {
+        "data": "data"
+      }
+    },
+    {
+      "StartNodeId": "84b37d41-01c0-41ed-9fbc-6e7701fc8dcd",
+      "EndNodeId": "bf7fc900-40b8-4873-9380-53613fdd3370",
+      "ParameterMappings": {
+        "selectedData": "data"
+      }
+    },
+    {
+      "StartNodeId": "bf7fc900-40b8-4873-9380-53613fdd3370",
+      "EndNodeId": "edeab3b2-dabc-48e6-a5cd-437e0e64d7d7",
+      "ParameterMappings": {
+        "filteredData": "data"
+      }
+    },
+    {
+      "StartNodeId": "edeab3b2-dabc-48e6-a5cd-437e0e64d7d7",
+      "EndNodeId": "9d263398-ea60-46f7-9113-0fe66c75130a",
+      "ParameterMappings": {
+        "resultData": "data"
+      }
+    }
+  ]
+}
